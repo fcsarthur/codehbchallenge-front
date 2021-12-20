@@ -7,14 +7,14 @@ import { MapService } from "../../providers/services/map/map.service";
   styleUrls: ['./locationfilter.component.scss']
 })
 export class LocationfilterComponent implements OnInit {
-
+  
   constructor(
     private _mapService:MapService
   ) { }
 
   ngOnInit(): void {
     const input = document.getElementById("locationfilter") as HTMLInputElement;
-    
+
     const options = {
       componentRestrictions: { country: "br" },
       fields: ["address_components", "geometry", "icon", "name"],
@@ -32,21 +32,27 @@ export class LocationfilterComponent implements OnInit {
         return;
       }
 
-      console.log("selected place", place);
+      this._mapService.selectedOrigin = place.geometry.location;
+      if(!this._mapService.originMarker) {
+        this._mapService.originMarker = this._mapService.pinMarker(this._mapService.selectedOrigin, './assets/icons/custom-pin-transp.png');
+        // this.originMarker = this._mapService.pinMarker(this._mapService.selectedOrigin, "https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png");
+      }
+      else {
+        this._mapService.originMarker.setPosition(place.geometry.location);
+        this._mapService.originMarker.setVisible(true);
+      }
+
+      this._mapService.createRoute();
     });
+  }
 
-    setTimeout(() => {
-      let origin = new google.maps.LatLng(-30.044100000000000, -51.219400000000000);
-      this._mapService.pinMarker(origin, "https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png")
-  
-      let destination = new google.maps.LatLng(-30.005100000000000, -51.201300000000000);
-      this._mapService.pinMarker(destination, "https://developers.google.com/maps/documentation/javascript/examples/full/images/parking_lot_maps.png")
-      
-      this._mapService.createRoute(origin, destination);
-  
-      //call route
-    }, 1000);
-
+  clearFilters() {
+    if(this._mapService.originMarker) {
+      this._mapService.originMarker.setVisible(false);
+      this._mapService.selectedOrigin = undefined;
+      this._mapService.clearRoute();
+      (document.getElementById("locationfilter") as HTMLInputElement).value = "";
+    }
   }
 
 }

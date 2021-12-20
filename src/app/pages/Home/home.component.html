@@ -3,7 +3,7 @@
         <app-locationfilter></app-locationfilter>
 
         <div class="locations-list">
-            <app-schoolcard *ngFor="let item of _locationService.allLocations" [name]="item.nome" [department]="item.dep_administrativa" [phoneNumber]="item.telefone"></app-schoolcard>
+            <app-schoolcard *ngFor="let item of _locationService.allLocations" [location]="item"></app-schoolcard>
         </div>
     </div>
 
