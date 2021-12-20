@@ -7,3 +7,19 @@ body {
 * {
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(159, 159, 159);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(105, 105, 105);
+}

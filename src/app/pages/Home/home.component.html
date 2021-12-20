@@ -1,5 +1,14 @@
-<main role="main">
-    <div>
-        <span>body</span>
+<main role="main" style="display: flex; height: 91vh">
+    <div style="background: #fdfdfd; width: 25%">
+        <div style="overflow: auto;max-height: 90vh;">
+            <div *ngFor="let item of items" style="margin: 10px;box-shadow: lightgrey 3px 3px 2px;padding: 5px;">
+                <p style="margin: 0"><strong>Nome da Escola XPTO da Silva - {{item}}</strong></p>
+                <p style="margin: 0">Dep. Administrativo: Municipal</p>
+                <p style="margin: 0;">Telefone: 111111</p>
+            </div>
+        </div>
+
     </div>
+
+    <div id="map" style="flex-grow: 1; margin: 5px"></div>
 </main>
