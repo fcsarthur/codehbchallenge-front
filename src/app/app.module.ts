@@ -14,6 +14,7 @@ import { LocationfilterComponent } from './components/locationfilter/locationfil
 import { HttpService } from "../app/providers/services/http/http.service";
 import { LocationService } from "../app/providers/services/location/location.service";
 import { MapService } from "../app/providers/services/map/map.service";
+import { DocsComponent } from './pages/docs/docs.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MapService } from "../app/providers/services/map/map.service";
     HomeComponent,
     MapComponent,
     SchoolcardComponent,
-    LocationfilterComponent
+    LocationfilterComponent,
+    DocsComponent
   ],
   imports: [
     BrowserModule,
