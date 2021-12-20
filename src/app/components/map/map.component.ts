@@ -34,9 +34,28 @@ export class MapComponent implements OnInit {
         map: this._mapService.map
       });
 
+      const contentString = 
+        `<div>
+          <p><strong>${x.nome}</strong></p>
+          <p>Dep. Adm.: ${x.dep_administrativa}</p>
+          <p>Telefone: ${x.telefone}</p>
+          <p>E-mail: ${x.email}</p>
+          ${x.url_website ? (`<p>Site: <a href="${x.url_website}">${x.url_website}</a></p>`) : ''}
+          <p>Endereço: ${x.logradouro}, ${x.numero}, ${x.bairro} - ${x.cep}</p>
+        </div>
+        <style>p{ margin: 0 }</style>`;
+    
+      const infoWindow = new google.maps.InfoWindow({
+        content: contentString,
+      });
+
       marker.addListener("click", () => {
-        console.log('clicked', marker)
-      })
+        infoWindow.open({
+          anchor: marker,
+          map: this._mapService.map,
+          shouldFocus: false,
+        });
+      });
 
       markers.push(marker);
     })
