@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from "../../providers/services/map/map.service";
+import { LocationService } from "../../providers/services/location/location.service";
 
 @Component({
   selector: 'app-locationfilter',
@@ -9,7 +10,8 @@ import { MapService } from "../../providers/services/map/map.service";
 export class LocationfilterComponent implements OnInit {
   
   constructor(
-    private _mapService:MapService
+    private _mapService:MapService,
+    private _locationService:LocationService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,8 @@ export class LocationfilterComponent implements OnInit {
       }
 
       this._mapService.selectedOrigin = place.geometry.location;
+      this.teste(place.geometry.location.lat(), place.geometry.location.lng());
+
       if(!this._mapService.originMarker) {
         this._mapService.originMarker = this._mapService.pinMarker(this._mapService.selectedOrigin, './assets/icons/custom-pin-transp.png');
         // this.originMarker = this._mapService.pinMarker(this._mapService.selectedOrigin, "https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png");
@@ -53,6 +57,10 @@ export class LocationfilterComponent implements OnInit {
       this._mapService.clearRoute();
       (document.getElementById("locationfilter") as HTMLInputElement).value = "";
     }
+  }
+
+  teste(lat: number, lng: number) {   
+    this._locationService.getNearestLocations(lat, lng);
   }
 
 }

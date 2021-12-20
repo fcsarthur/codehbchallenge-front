@@ -2,4 +2,5 @@
     <p><strong>{{ (location || {}).nome }}</strong> <a style="float: right; font-size: 0.9em; color:grey; cursor: pointer;" (click)="createRoute()">Ver rota</a></p>
     <p class="small">Dep. Administrativo: {{ (location || {}).dep_administrativa }}</p>
     <p class="small">Telefone: {{ (location || {}).telefone }}</p>
+    <p *ngIf="(location || {}).distance">Distância: {{ (((location || {}).distance || 0).toFixed(2) + " " + "Km").replace(".", ",") }}</p>
 </div>
