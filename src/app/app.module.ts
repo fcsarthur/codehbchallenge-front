@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/Home/home.component';
 import { HttpService } from "../app/providers/services/http/http.service";
 import { LocationService } from "../app/providers/services/location/location.service";
 import { MapComponent } from './components/map/map.component';
+import { SchoolcardComponent } from './components/schoolcard/schoolcard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MapComponent } from './components/map/map.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    MapComponent
+    MapComponent,
+    SchoolcardComponent
   ],
   imports: [
     BrowserModule,
