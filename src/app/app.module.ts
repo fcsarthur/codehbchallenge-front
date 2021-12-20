@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/components/header/header.component'
 import { FooterComponent } from './layout/components/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './pages/Home/home.component';
 
 import { HttpService } from "../app/providers/services/http/http.service";
 import { LocationService } from "../app/providers/services/location/location.service";
