@@ -16,7 +16,7 @@ import { LocationService } from "../app/providers/services/location/location.ser
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
