@@ -1,12 +1,14 @@
-<main role="main" style="display: flex; height: 91vh">
-    <div style="background: #fdfdfd; width: 25%">
-        <div style="overflow: auto;max-height: 90vh;">
-            <app-schoolcard *ngFor="let item of _locationService.allLocations" [name]="item.nome" [department]="item.dep_administrativa" [phoneNumber]="item.telefone">
-            </app-schoolcard>
+<main role="main">
+    <div class="left-actions">
+        <div class="filter" style="margin: 10px 10px 15px">
+            <p style="margin-bottom: 5px"><strong>Buscar escolas mais próximas por endereço</strong></p>
+            <input name="locationfilter" placeholder="Insira o endereço" style="width: 99%" />
         </div>
-
+        <div class="locations-list">
+            <app-schoolcard *ngFor="let item of _locationService.allLocations" [name]="item.nome" [department]="item.dep_administrativa" [phoneNumber]="item.telefone"></app-schoolcard>
+        </div>
     </div>
 
     <app-map></app-map>
-    <div id="map" style="flex-grow: 1; margin: 5px"></div>
+    <div id="map"></div>
 </main>

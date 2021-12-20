@@ -12,6 +12,7 @@ import { HttpService } from "../app/providers/services/http/http.service";
 import { LocationService } from "../app/providers/services/location/location.service";
 import { MapComponent } from './components/map/map.component';
 import { SchoolcardComponent } from './components/schoolcard/schoolcard.component';
+import { LocationfilterComponent } from './components/locationfilter/locationfilter.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SchoolcardComponent } from './components/schoolcard/schoolcard.componen
     FooterComponent,
     HomeComponent,
     MapComponent,
-    SchoolcardComponent
+    SchoolcardComponent,
+    LocationfilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,19 @@
+main {
+    display: flex;
+    height: 91vh;
+}
 
+.left-actions {
+    background: #fdfdfd;
+    width: 25%
+}
+
+.locations-list {
+    overflow: auto;
+    max-height: 85vh;
+}
+
+#map {
+    flex-grow: 1;
+    margin: 5px;
+}
