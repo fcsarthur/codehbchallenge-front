@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapService } from "../../providers/services/map/map.service";
 
 @Component({
   selector: 'app-locationfilter',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocationfilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _mapService:MapService
+  ) { }
 
   ngOnInit(): void {
+    const input = document.getElementById("locationfilter") as HTMLInputElement;
+    
+    const options = {
+      componentRestrictions: { country: "br" },
+      fields: ["address_components", "geometry", "icon", "name"],
+      strictBounds: false,
+      types: ["establishment"],
+    };
+
+    const autocomplete = new google.maps.places.Autocomplete(input, options);
+    
+    autocomplete.addListener("place_changed", () => {
+      const place = autocomplete.getPlace();
+      
+      if (!place.geometry || !place.geometry.location) {
+        ("No details available for input: '" + place.name + "'");
+        return;
+      }
+
+      console.log("selected place", place);
+    });
+
   }
 
 }
