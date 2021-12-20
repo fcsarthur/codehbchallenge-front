@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Loader } from "@googlemaps/js-api-loader";
 import { environment } from "../../../environments/environment";
 import { LocationService } from '../../providers/services/location/location.service';
+import { MapService } from '../../providers/services/map/map.service';
 import { Location } from "../../models/location";
 
 @Component({
@@ -11,39 +11,37 @@ import { Location } from "../../models/location";
 })
 export class MapComponent implements OnInit {
 
-  constructor(private _locationService:LocationService) { }
-
-  map!: google.maps.Map;
-  markers: google.maps.Marker[] = [];
+  constructor(
+    private _locationService:LocationService,
+    private _mapService:MapService
+  ) 
+  { }
 
   ngOnInit(): void {
-    let loader = new Loader({
-      apiKey: environment.mapsAPIKey
-    })
+      this._mapService.createMap(document.getElementById("map") as HTMLElement);
 
-    loader.load().then(() => {
-      this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: -30.063885, lng: -51.118714 },
-        zoom: 12
-      })
-
-      this.placeMarkers()
-    })
+      setTimeout(() => {
+        this.placeMarkers()
+      }, 500)
   }
 
   placeMarkers() {
+    let markers: google.maps.Marker[] = [];
+    
     (this._locationService.allLocations as Location[]).map(x => {
       let marker = new google.maps.Marker({
         position: new google.maps.LatLng(x.latitude, x.longitude),
-        map: this.map
+        map: this._mapService.map
       });
 
       marker.addListener("click", () => {
         console.log('clicked', marker)
       })
 
-      this.markers.push(marker);
+      markers.push(marker);
     })
+    
+    this._mapService.addRangeMarkers(markers);
   }
 
 }

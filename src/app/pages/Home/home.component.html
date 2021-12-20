@@ -1,15 +1,12 @@
-<main role="main" style="display: flex; height: 91vh">
-    <div style="background: #fdfdfd; width: 25%">
-        <div style="overflow: auto;max-height: 90vh;">
-            <div *ngFor="let item of _locationService.allLocations" style="margin: 10px;box-shadow: lightgrey 3px 3px 2px;padding: 5px;">
-                <p style="margin: 0"><strong>{{ item.nome }}</strong></p>
-                <p style="margin: 0">Dep. Administrativo: {{ item.dep_administrativa }}</p>
-                <p style="margin: 0;">Telefone: {{ item.telefone }}</p>
-            </div>
-        </div>
+<main role="main">
+    <div class="left-actions">
+        <app-locationfilter></app-locationfilter>
 
+        <div class="locations-list">
+            <app-schoolcard *ngFor="let item of _locationService.allLocations" [name]="item.nome" [department]="item.dep_administrativa" [phoneNumber]="item.telefone"></app-schoolcard>
+        </div>
     </div>
 
     <app-map></app-map>
-    <div id="map" style="flex-grow: 1; margin: 5px"></div>
+    <div id="map"></div>
 </main>
