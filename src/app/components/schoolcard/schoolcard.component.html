@@ -1,5 +1,5 @@
 <div class="school-card">
-    <p><strong>{{ name }}</strong> <a style="float: right; font-size: 0.9em; color:grey" href="#">Ver rota</a></p>
-    <p class="small">Dep. Administrativo: {{ department }}</p>
-    <p class="small">Telefone: {{ phoneNumber }}</p>
+    <p><strong>{{ (location || {}).nome }}</strong> <a style="float: right; font-size: 0.9em; color:grey; cursor: pointer;" (click)="createRoute()">Ver rota</a></p>
+    <p class="small">Dep. Administrativo: {{ (location || {}).dep_administrativa }}</p>
+    <p class="small">Telefone: {{ (location || {}).telefone }}</p>
 </div>

@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
 
       setTimeout(() => {
         this.placeMarkers()
-      }, 500)
+      }, 700)
   }
 
   placeMarkers() {
