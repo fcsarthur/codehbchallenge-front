@@ -1,9 +1,7 @@
 <main role="main">
     <div class="left-actions">
-        <div class="filter" style="margin: 10px 10px 15px">
-            <p style="margin-bottom: 5px"><strong>Buscar escolas mais próximas por endereço</strong></p>
-            <input name="locationfilter" placeholder="Insira o endereço" style="width: 99%" />
-        </div>
+        <app-locationfilter></app-locationfilter>
+
         <div class="locations-list">
             <app-schoolcard *ngFor="let item of _locationService.allLocations" [name]="item.nome" [department]="item.dep_administrativa" [phoneNumber]="item.telefone"></app-schoolcard>
         </div>
