@@ -10,13 +10,15 @@ import { HomeComponent } from './pages/Home/home.component';
 
 import { HttpService } from "../app/providers/services/http/http.service";
 import { LocationService } from "../app/providers/services/location/location.service";
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

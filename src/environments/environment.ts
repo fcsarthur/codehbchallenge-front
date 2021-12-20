@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiURL: 'https://codehbchallengeapi.azurewebsites.net/api/v1',
+  mapsAPIKey: 'AIzaSyBHwn1PiImZ4zUes7XwdAXIdMNBGfE2xqE'
 };
 
 /*
