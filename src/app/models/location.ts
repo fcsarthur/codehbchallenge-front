@@ -16,4 +16,5 @@ export class Location {
   telefone: number;
   email: string;
   url_website: string;
+  distance?: number;
 }

@@ -23,4 +23,18 @@ export class LocationService {
         }
       });
   }
+
+  getNearestLocations(lat: number, lng: number) {
+    const request = {
+      lat,
+      lng
+    };
+    return this._http
+      .get(`${environment.apiURL}`, `${ENDPOINTS.LIST_NEAREST_LOCATIONS}`, request)
+      .subscribe((res) => {
+        if(res.data != null) {
+          this.allLocations = res.data;
+        }
+      });
+  }
 }
